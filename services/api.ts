@@ -1,4 +1,7 @@
-import type { NextFetchRequestConfig } from 'next/dist/server/web/spec-extension/fetch-event';
+type NextFetchRequestConfig = {
+  revalidate?: number | false;
+  tags?: string[];
+};
 
 export type HttpMethod = 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
 
