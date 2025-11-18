@@ -1,8 +1,9 @@
+import { describe, it, expect, beforeAll, beforeEach, vi } from 'vitest';
 import { signAuthToken, verifyAuthToken } from '@/lib/auth';
 
-jest.mock('@/lib/auth', () => ({
-  signAuthToken: jest.fn(),
-  verifyAuthToken: jest.fn(),
+vi.mock('@/lib/auth', () => ({
+  signAuthToken: vi.fn(),
+  verifyAuthToken: vi.fn(),
 }));
 
 type RouteHandlers = typeof import('@/app/api/auth/route');
@@ -19,9 +20,9 @@ describe('auth route', () => {
   });
 
   beforeEach(() => {
-    jest.resetAllMocks();
-    (signAuthToken as jest.Mock).mockResolvedValue('mock-token');
-    (verifyAuthToken as jest.Mock).mockResolvedValue({ email, sub: email });
+    vi.resetAllMocks();
+    (signAuthToken as ReturnType<typeof vi.fn>).mockResolvedValue('mock-token');
+    (verifyAuthToken as ReturnType<typeof vi.fn>).mockResolvedValue({ email, sub: email });
   });
 
   it('issues a JWT on POST', async () => {

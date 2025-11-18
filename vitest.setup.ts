@@ -1,4 +1,4 @@
-import '@testing-library/jest-dom';
+import '@testing-library/jest-dom/vitest';
 
 // Ensure Web Crypto is available for jose in tests.
 if (typeof global.crypto === 'undefined') {
@@ -13,7 +13,7 @@ if (typeof global.TextDecoder === 'undefined') {
   global.TextDecoder = require('util').TextDecoder as unknown as typeof TextDecoder;
 }
 
-// Stream primitives for undici/fetch in Jest.
+// Stream primitives for undici/fetch in Vitest.
 if (typeof global.ReadableStream === 'undefined') {
   const { ReadableStream, WritableStream } = require('node:stream/web');
   global.ReadableStream = ReadableStream;
