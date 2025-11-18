@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+# Skip if commit message already exists (amend, merge, etc.)
+if [ -n "$2" ]; then
+  exit 0
+fi
+
+node .husky/scripts/generate-commit-msg.js "$1"
