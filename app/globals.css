@@ -1,0 +1,64 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0b0b10;
+  --muted: #e4e4e7;
+  --muted-foreground: #4b5563;
+  --border: #e4e4e7;
+  --ring: #2563eb;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0f;
+    --foreground: #e5e7eb;
+    --muted: #18181b;
+    --muted-foreground: #9ca3af;
+    --border: #27272a;
+    --ring: #22d3ee;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    var(--font-geist-sans),
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--ring);
+  color: #ffffff;
+}
+
+.glass-panel {
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--background) 90%, rgba(255, 255, 255, 0.08));
+  backdrop-filter: blur(16px);
+}
